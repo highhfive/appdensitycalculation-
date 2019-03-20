@@ -58,4 +58,4 @@ Group 5
 * Lasmyr Edullantes
 * Danna Ashley Mayo
 * Michaela Miranda
-* Alexis Carlos Ramos
+* Alexis Carlo Ramos
