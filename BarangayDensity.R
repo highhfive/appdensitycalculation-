@@ -5,4 +5,3 @@ df1<-select(population,Region,Barangay)
 df2<-select(region,Region,Area)
 df2$count<-with(df1,table(Region))
 df2$bararea<-with(df2,Area/count)
-
