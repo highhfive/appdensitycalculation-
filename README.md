@@ -34,6 +34,24 @@ write.csv(top5BarangayDensities, 'top5BarangayDensities.csv')
 ```
 
 ## City Density Calculations
+```R
+
+```
+
+### This will result in a data frame of the area of each city
+```R
+
+```
+
+### This will result in a data frame of the population density of each city
+```R
+
+```
+
+### This will extract the top 5 population densities among all the cities and save it in a CSV
+```R
+
+```
 
 Group 5
 * Migo Dancel
