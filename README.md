@@ -38,23 +38,43 @@ write.csv(top5BarangayDensities, 'top5BarangayDensities.csv')
 We will then take the first 5 rows of the arranged (descending) data frame of the population density for all barangays (ArrangedPD) and then write to CSV with a base R function
 
 ## City Density Calculations
-```R
-
-```
 
 ### This will result in a data frame of the area of each city
 ```R
+##Calculates Area of Barangay
+region=read.csv("regionarea.csv")
+population=read.csv("population.csv")
+library(dplyr)
+library(plyr)
+head(region)
+head(population)
 
+# Counting # of cities
+df3<-select(population, Region, CityProvince)
+City_count<-count(df3, "CityProvince")
+City_count
+
+# Put back count to data frame with city label, count will print as 'freq'
+x<-merge(x=df3, y=City_count, by="CityProvince")
+head(x)
+y<-cbind(x, population$Population)
+head(y)
 ```
 
 ### This will result in a data frame of the population density of each city
 ```R
-
+#Put back into data frame the area per region and calculate area by city, city area will pritn as 'new'
+CityCount_Pop<-merge(x=region, y=y, by="Region")
+CityCount_Pop[,City_PopDen]<-CityCount_Pop[,Area]/CityCount_Pop[,freq]
+View(CityCount_Pop)
 ```
 
 ### This will extract the top 5 population densities among all the cities and save it in a CSV
 ```R
-
+##Extracts the Top 5 City with highest densities to CSV file
+orderedByDensity <- arrange(df2, desc(CityCount_Pop))
+top5CityDensities <- slice(orderedByDensity, c(1:5))
+write.csv(top5CityDensities, 'top5CityDensities.csv')
 ```
 
 Group 5
