@@ -93,8 +93,7 @@ head(PopDen_bycity)
 ### This will extract the top 5 population densities among all the cities and save it in a CSV
 ```R
 ##Extracts the Top 5 City with highest densities to CSV file
-orderedByDensity <- arrange(df2, desc(CityCount_Pop))
-top5CityDensities <- slice(orderedByDensity, c(1:5))
+top5CityDensities <- slice(PopDen_bycity, c(1:5))
 write.csv(top5CityDensities, 'top5CityDensities.csv')
 ```
 
