@@ -5,8 +5,8 @@
 ## City Density Calculations
 
 Group 5
-Migo Dancel
-Lasmyr Edullantes
-Danna Ashley Mayo
-Michaela Miranda
-Alexis Carlos Ramos
+* Migo Dancel
+* Lasmyr Edullantes
+* Danna Ashley Mayo
+* Michaela Miranda
+* Alexis Carlos Ramos
