@@ -59,14 +59,35 @@ x<-merge(x=df3, y=City_count, by="CityProvince")
 head(x)
 y<-cbind(x, population$Population)
 head(y)
+
+#Put back into data frame the area per region and calculate area by city, city area will pritn as 'new'
+CityCount_Pop<-merge(x=region, y=y, by="Region")
+head(CityCount_Pop)
+CityCount_Pop[,"City_PopDen"]<-CityCount_Pop[,"Area"]/CityCount_Pop[,"freq"]
+head(CityCount_Pop)
 ```
 
 ### This will result in a data frame of the population density of each city
 ```R
-#Put back into data frame the area per region and calculate area by city, city area will pritn as 'new'
-CityCount_Pop<-merge(x=region, y=y, by="Region")
-CityCount_Pop[,City_PopDen]<-CityCount_Pop[,Area]/CityCount_Pop[,freq]
-View(CityCount_Pop)
+#Calculating Population per City
+group_by(CityCount_Pop, CityProvince)
+City_Pop<-aggregate(population$Population, by=list(CityProvince=population$CityProvince), FUN=sum)
+head(City_Pop)
+
+#merge population and area
+City_Area<-aggregate(CityCount_Pop$City_PopDen, by=list(CityProvince=CityCount_Pop$CityProvince), FUN=sum)
+head(City_Area)
+City_Pop_Area<-merge(City_Pop, City_Area, by="CityProvince")
+head(City_Pop_Area)
+
+
+#Calculating population density per city
+PopDen1<-City_Pop_Area$x.x/City_Pop_Area$x.y
+PopDen1
+PopDenMerge<-cbind(City_Pop_Area, PopDen1)
+head(PopDenMerge)
+PopDen_bycity<-arrange(PopDenMerge, desc(PopDenMerge$PopDen1))
+head(PopDen_bycity)
 ```
 
 ### This will extract the top 5 population densities among all the cities and save it in a CSV
