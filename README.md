@@ -1,8 +1,8 @@
-#App Density Calculation
+# App Density Calculation
 
-##Barangay Density Calculations
+## Barangay Density Calculations
 
-##City Density Calculations
+## City Density Calculations
 
 Group 5
 Migo Dancel
